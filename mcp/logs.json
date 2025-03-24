@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": "2025-03-25 03:58:20",
+    "log_type": "TEXT_FILTER",
+    "message": "\ud83d\udeab Inappropriate text removed",
+    "sender": "rvnqom#0"
+  },
+  {
+    "timestamp": "2025-03-25 03:59:24",
+    "log_type": "IMAGE_MOD",
+    "message": "\ud83d\uddbc\ufe0f NSFW or suspicious image removed",
+    "sender": "rvnqom#0"
+  }
+]

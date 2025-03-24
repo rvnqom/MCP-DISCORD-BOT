@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Logs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .log-container {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            overflow-y: auto;
+            height: 500px;
+        }
+        .log-entry {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            font-size: 14px;
+        }
+        .timestamp {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .log-type {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .sender {
+            font-weight: bold;
+            color: #ff5733;
+        }
+    </style>
+    <script>
+        async function fetchLogs() {
+            try {
+                const response = await fetch("http://192.168.128.238:8080/logs");
+                const data = await response.json();
+                
+                const logContainer = document.getElementById("log-container");
+                logContainer.innerHTML = data.logs
+                    .map(log => `
+                        <div class="log-entry">
+                            <span class="timestamp">[${log.timestamp}]</span> 
+                            <span class="log-type">${log.log_type}</span> - 
+                            <span class="message">${log.message}</span> 
+                            <span class="sender">(${log.sender})</span>
+                        </div>
+                    `)
+                    .join("");
+            } catch (error) {
+                console.error("Error fetching logs:", error);
+                document.getElementById("log-container").innerHTML = "<p>⚠️ Failed to load logs.</p>";
+            }
+        }
+
+        setInterval(fetchLogs, 2000); // Refresh logs every 2 seconds
+        window.onload = fetchLogs;
+    </script>
+</head>
+<body>
+    <h1>📜 Discord Bot Logs</h1>
+    <div class="log-container" id="log-container"></div>
+</body>
+</html>

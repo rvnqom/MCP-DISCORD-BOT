@@ -1,0 +1,26 @@
+{
+  "filters": [
+    { "type": "pattern", "pattern": "\\bfuck\\b" },
+    { "type": "pattern", "pattern": "\\bbitch\\b" },
+    { "type": "regex", "pattern": "\\bi hate you all\\b" },
+    { "type": "model", "name": "hate_speech_detection" }
+  ],
+  "transformers": [
+    {
+      "type": "regex_replace",
+      "pattern": "\\b(idk)\\b",
+      "replacement": "I don't know"
+    },
+    {
+      "type": "regex_replace",
+      "pattern": "\\b(omg)\\b",
+      "replacement": "oh my god"
+    },
+    {
+      "type": "replace",
+      "target": "brb",
+      "replacement": "be right back"
+    }
+  ],
+  "routes": []
+}
