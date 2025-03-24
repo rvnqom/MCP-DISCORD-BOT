@@ -1,0 +1,30 @@
+{
+  "filters": [
+    {
+      "type": "keyword",
+      "pattern": "spoiler",
+      "action": "delete",
+      "reason": "No spoilers allowed"
+    },
+    {
+      "type": "regex",
+      "pattern": "(?i)badword\\d+",
+      "action": "warn"
+    }
+  ],
+  "transformers": [
+    {
+      "type": "replace",
+      "target": "hello",
+      "replacement": "hi"
+    }
+  ],
+  "routes": [
+    {
+      "if_contains": "bitch",
+      "send_to": "1352909593763778641"
+    }
+  ]
+}
+
+  
